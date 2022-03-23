@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "active",
+        "testing",
+        "closed"
+      ],
+      "default": "active"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "project_date": {
+      "type": "string"
+    },
+    "prefix": {
+      "type": "string"
+    },
+    "bugs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bug.bug",
+      "mappedBy": "project"
+    }
+  }
+}

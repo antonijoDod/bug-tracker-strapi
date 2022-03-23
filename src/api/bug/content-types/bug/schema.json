@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bugs",
+  "info": {
+    "singularName": "bug",
+    "pluralName": "bugs",
+    "displayName": "Bug",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "prefix": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "deadline": {
+      "type": "date"
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "default": "medium"
+    },
+    "project": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::project.project",
+      "inversedBy": "bugs"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "bug"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "open",
+        "testing",
+        "closed"
+      ],
+      "default": "open"
+    }
+  }
+}
